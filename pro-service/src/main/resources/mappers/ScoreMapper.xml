@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbin.dao.ScoreDao">
+<!--
+
+    <insert id="insertScore" parameterType="Score">
+        insert into scores (studentId,courseId,stuCouScore) value
+        (#{student.studentId},#{course.courseId},#{stuCouScore})
+    </insert>
+
+    <delete id="deleteScore" parameterType="Score">
+        delete from scores where studentId=#{student.studentId} and courseId=#{course.courseId}
+    </delete>
+
+    <update id="updateScore" parameterType="Score">
+        update scores set stuCouScore=#{stuCouScore} where studentId=#{student.studentId} and
+        courseId=#{course.courseId}
+    </update>
+-->
+
+    <!-- 注意id result association 的顺序 否则报错 -->
+  <!--  <resultMap id="scoreMap" type="Score">
+        <result property="stuCouScore" column="stuCouScore"></result>
+
+        <association property="student" column="studentId" select="com.shpun.dao.StudentDao.selectStudentById">
+        </association>
+
+        <association property="course" column="courseId" select="com.shpun.dao.CourseDao.selectCourseById">
+        </association>
+    </resultMap>
+-->
+    <!-- 用于search -->
+<!--    <resultMap id="scoreMapSearch" type="Score">
+        <result property="stuCouScore" column="stuCouScore"></result>
+
+        <association property="student" javaType="Student">
+            <id property="studentId" column="studentId"></id>
+            <result property="studentName" column="studentName"></result>
+        </association>
+
+        <association property="course" javaType="Course">
+            <id property="courseId" column="courseId"></id>
+            <result property="courseName" column="courseName"></result>
+        </association>
+    </resultMap>-->
+
+    <!--<select id="searchFromScore" parameterType="string" resultMap="scoreMapSearch">
+        select scores.studentId as studentId,students.studentName as studentName,scores.courseId as
+        courseId,courses.courseName as courseName,scores.stuCouScore from scores
+        join students on students.studentId = scores.studentId
+        join courses on courses.courseId = scores.courseId
+        where
+        concat(scores.studentId,ifnull(students.studentName,''),scores.courseId,ifnull(courses.courseName,''),scores.stuCouScore)
+        like concat(concat('%',#{s}),'%')
+    </select>
+
+    <select id="selectScoreById" parameterType="Score" resultMap="scoreMap">
+        select studentId,courseId,stuCouScore from scores where studentId=#{student.studentId} and
+        courseId=#{course.courseId}
+    </select>
+
+    <select id="selectAllScores" resultMap="scoreMap">
+        select studentId,courseId,stuCouScore from scores
+    </select>
+-->
+
+</mapper>
